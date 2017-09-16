@@ -28,4 +28,4 @@ RUN ln -s /var/www/html /home/inchoo/html
 
 # Boot
 RUN nohup /usr/sbin/php-fpm7.0 &
-CMD ["sh", "/usr/sbin/apache2ctl -D FOREGROUND"]
+CMD ["sh", "/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
