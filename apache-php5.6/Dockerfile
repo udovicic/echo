@@ -27,5 +27,6 @@ RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
 
 # Boot
-RUN nohup /usr/sbin/php-fpm5.6 &
-CMD ["sh", "/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ADD start.sh /start.sh
+RUN chmod 755 /start.sh
+CMD ["/start.sh"]
