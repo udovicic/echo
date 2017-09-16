@@ -3,18 +3,18 @@ FROM ubuntu:17.10
 # Setup common packages, repo info, etc
 RUN apt-get update
 RUN apt-get dist-upgrade -y
-RUN apt-get install -y whois sudo vim htop
-RUN apt-get install -y software-properties-common python-software-properties
+RUN apt-get install -y whois sudo vim htop software-properties-common python-software-properties
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
-# Install PHP 7.0 with Magento dependencies
-RUN apt-get install -y php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-fpm php7.0-gd php7.0-intl php7.0-json php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-opcache php7.0-readline php7.0-soap php7.0-xml php7.0-xsl php7.0-zip php-xdebug
+# Install packages
+RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-fpm php7.0-gd php7.0-intl php7.0-json php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-opcache php7.0-readline php7.0-soap php7.0-xml php7.0-xsl php7.0-zip php-xdebug
+
+# Setup PHP
 RUN mkdir /run/php
 RUN touch /run/php/php-fpm.sock
 
-# Install apache
-RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid
+# Setup apache
 RUN ln -s /etc/apache2/mods-available/proxy.conf /etc/apache2/mods-enabled/proxy.conf
 RUN ln -s /etc/apache2/mods-available/proxy.load /etc/apache2/mods-enabled/proxy.load
 RUN ln -s /etc/apache2/mods-available/headers.load /etc/apache2/mods-enabled/headers.load
