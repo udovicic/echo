@@ -32,7 +32,15 @@ RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo
 RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
 
-# Boot
+# Add custom scripts
 ADD start.sh /start.sh
+ADD ../scripts/robo.phar /usr/bin/robo
+ADD ../scripts/n98-magerun.phar /usr/bin/n98-magerun
+ADD ../scripts/n98-magerun2.phar /usr/bin/n98-magerun2
+
 RUN chmod 755 /start.sh
+RUN chmod 755 /usr/bin/robo
+RUN chmod 755 /usr/bin/n98-magerun
+RUN chmod 755 /usr/bin/n98-magerun2
+
 CMD ["/start.sh"]
