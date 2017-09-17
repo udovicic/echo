@@ -28,10 +28,10 @@ RUN ln -s /var/www/html /home/inchoo/html
 
 # Add custom scripts
 ADD start.sh /start.sh
-ADD ../scripts/robo.phar /usr/bin/robo
-ADD ../scripts/composer.phar /usr/bin/composer
-ADD ../scripts/n98-magerun.phar /usr/bin/n98-magerun
-ADD ../scripts/n98-magerun2.phar /usr/bin/n98-magerun2
+ADD scripts/robo.phar /usr/bin/robo
+ADD scripts/composer.phar /usr/bin/composer
+ADD scripts/n98-magerun.phar /usr/bin/n98-magerun
+ADD scripts/n98-magerun2.phar /usr/bin/n98-magerun2
 
 RUN chmod 755 /start.sh
 RUN chmod 755 /usr/bin/robo
