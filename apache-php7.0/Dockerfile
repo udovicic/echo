@@ -26,6 +26,10 @@ RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo
 RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
 
+# Add custom configuration
+ADD config/apache.conf /etc/apache2/sites-available/000-default.conf
+ADD config/fpm.conf /etc/php/7.0/fpm/pool.d/www.conf
+
 # Add custom scripts
 ADD start.sh /start.sh
 ADD scripts/robo.phar /usr/bin/robo
