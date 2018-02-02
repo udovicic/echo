@@ -44,6 +44,6 @@ RUN chmod 755 /usr/bin/n98-magerun2
 
 # Cleanup
 RUN apt-get autoremove -y
-RUN apt/get clean
+RUN apt-get clean
 
 CMD ["/start.sh"]
