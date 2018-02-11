@@ -27,7 +27,7 @@ RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
 
 # Add custom configuration
-ADD config/fpm.conf /etc/php/7.0/fpm/pool.d/www.conf
+ADD config/fpm.conf /etc/php/5.6/fpm/pool.d/www.conf
 
 # Add custom scripts
 ADD start.sh /start.sh
