@@ -25,6 +25,10 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
 RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo
 RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
+RUN echo 'debug="php -d xdebug.remote_autostart=On"' >> /home/inchoo/.bashrc
+
+# Add custom configuration
+ADD config/fpm.conf /etc/php/7.1/fpm/pool.d/www.conf
 
 # Add custom scripts
 ADD start.sh /start.sh
@@ -38,5 +42,9 @@ RUN chmod 755 /usr/bin/robo
 RUN chmod 755 /usr/bin/composer
 RUN chmod 755 /usr/bin/n98-magerun
 RUN chmod 755 /usr/bin/n98-magerun2
+
+# Cleanup
+RUN apt-get autoremove -y
+RUN apt-get clean
 
 CMD ["/start.sh"]

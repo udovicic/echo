@@ -25,6 +25,7 @@ RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rew
 RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo
 RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
+RUN echo 'debug="php -d xdebug.remote_autostart=On"' >> /home/inchoo/.bashrc
 
 # Add custom configuration
 ADD config/fpm.conf /etc/php/5.6/fpm/pool.d/www.conf
