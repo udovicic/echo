@@ -13,6 +13,7 @@ RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2
 # Setup PHP
 RUN mkdir /run/php
 RUN touch /run/php/php-fpm.sock
+RUN echo "alias php-debug='php -d xdebug.remote_autostart=1'" > /etc/bash.bashrc
 
 # Setup apache
 RUN ln -s /etc/apache2/mods-available/proxy.conf /etc/apache2/mods-enabled/proxy.conf
