@@ -1,7 +1,9 @@
 #!/bin/sh
 
-if ! grep -q "host.internal" /etc/hosts; then
-    echo -e "`/sbin/ip route|awk '/default/ { print $3 }'`\tinchoo.host.internal" | sudo tee -a /etc/hosts > /dev/null
-fi
+# Handle the IP change
+cat /etc/hosts | grep -v "inchoo.host.internal" > /etc/hosts
+echo -e "`/sbin/ip route|awk '/default/ { print $3 }'`\tinchoo.host.internal" | tee -a /etc/hosts > /dev/null
+
+# Run services
 nohup /usr/sbin/php-fpm5.6 &
 /usr/sbin/apache2ctl -D FOREGROUND
