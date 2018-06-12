@@ -21,6 +21,8 @@ RUN ln -s /etc/apache2/mods-available/proxy.load /etc/apache2/mods-enabled/proxy
 RUN ln -s /etc/apache2/mods-available/headers.load /etc/apache2/mods-enabled/headers.load
 RUN ln -s /etc/apache2/mods-available/proxy_fcgi.load /etc/apache2/mods-enabled/proxy_fcgi.load
 RUN ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/rewrite.load
+RUN ln -s /etc/apache2/mods-available/ssl.conf /etc/apache2/mods-enabled/ssl.conf
+RUN ln -s /etc/apache2/mods-available/ssl.load /etc/apache2/mods-enabled/ssl.load
 
 # Create new user
 RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo
