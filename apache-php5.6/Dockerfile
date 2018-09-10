@@ -8,7 +8,7 @@ RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
 # Install packages
-RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php5.6-bcmath php5.6-cli php5.6-common php5.6-curl php5.6-fpm php5.6-gd php5.6-intl php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-opcache php5.6-readline php5.6-soap php5.6-xml php5.6-xsl php5.6-zip php-xdebug
+RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php5.6-bcmath php5.6-cli php5.6-common php5.6-curl php5.6-fpm php5.6-gd php5.6-intl php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-opcache php5.6-readline php5.6-soap php5.6-xml php5.6-xsl php5.6-zip php-xdebug mariadb-client
 
 # Setup PHP
 RUN mkdir /run/php
