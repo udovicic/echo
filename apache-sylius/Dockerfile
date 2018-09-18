@@ -10,12 +10,13 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get update
 
 # Install packages
-RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd php7.2-intl php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-soap php7.2-xml php7.2-xsl php7.2-zip php-xdebug yarn mariadb-client
+RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd php7.2-intl php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-soap php7.2-xml php7.2-xsl php7.2-zip php-xdebug yarn mariadb-client curl
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
 
 # Setup PHP
 RUN mkdir /run/php
 RUN touch /run/php/php-fpm.sock
-RUN echo "alias php-debug='php -d xdebug.remote_autostart=1'" > /etc/bash.bashrc
 
 # Setup apache
 RUN ln -s /etc/apache2/mods-available/proxy.conf /etc/apache2/mods-enabled/proxy.conf
@@ -31,6 +32,7 @@ RUN ln -s /etc/apache2/mods-available/socache_shmcb.load /etc/apache2/mods-enabl
 RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo
 RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
+RUN echo "alias php-debug='php -d xdebug.remote_autostart=1'" > /home/inchoo/.bash_aliases
 
 # Add custom configuration
 ADD config/fpm.conf /etc/php/7.2/fpm/pool.d/www.conf

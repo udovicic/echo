@@ -8,12 +8,13 @@ RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
 # Install packages
-RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php7.1-bcmath php7.1-cli php7.1-common php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-json php7.1-mbstring php7.1-mcrypt php7.1-mysql php7.1-opcache php7.1-readline php7.1-soap php7.1-xml php7.1-xsl php7.1-zip php-xdebug mariadb-client
+RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php7.1-bcmath php7.1-cli php7.1-common php7.1-curl php7.1-fpm php7.1-gd php7.1-intl php7.1-json php7.1-mbstring php7.1-mcrypt php7.1-mysql php7.1-opcache php7.1-readline php7.1-soap php7.1-xml php7.1-xsl php7.1-zip php-xdebug mariadb-client curl
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y nodejs
 
 # Setup PHP
 RUN mkdir /run/php
 RUN touch /run/php/php-fpm.sock
-RUN echo "alias php-debug='php -d xdebug.remote_autostart=1'" > /etc/bash.bashrc
 
 # Setup apache
 RUN ln -s /etc/apache2/mods-available/proxy.conf /etc/apache2/mods-enabled/proxy.conf
@@ -29,7 +30,7 @@ RUN ln -s /etc/apache2/mods-available/socache_shmcb.load /etc/apache2/mods-enabl
 RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo
 RUN adduser inchoo sudo
 RUN ln -s /var/www/html /home/inchoo/html
-RUN echo 'debug="php -d xdebug.remote_autostart=On"' >> /home/inchoo/.bashrc
+RUN echo "alias php-debug='php -d xdebug.remote_autostart=1'" > /home/inchoo/.bash_aliases
 
 # Add custom configuration
 ADD config/fpm.conf /etc/php/7.1/fpm/pool.d/www.conf
