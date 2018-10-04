@@ -3,7 +3,7 @@ FROM ubuntu:17.10
 # Setup common packages, repo info, etc
 RUN apt-get update
 RUN apt-get dist-upgrade -y
-RUN apt-get install -y whois sudo vim htop software-properties-common python-software-properties sendmail git iproute iputils-ping curl
+RUN apt-get install -y whois sudo vim htop software-properties-common python-software-properties sendmail git iproute iputils-ping lsof
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
