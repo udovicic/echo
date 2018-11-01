@@ -49,5 +49,8 @@ RUN chmod 755 /usr/bin/composer
 # Cleanup
 RUN apt-get autoremove -y
 RUN apt-get clean
+RUN rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
+
+WORKDIR /var/www/html
 
 CMD ["/start.sh"]
