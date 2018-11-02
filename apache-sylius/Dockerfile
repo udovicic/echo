@@ -52,6 +52,5 @@ RUN apt-get clean
 RUN rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 WORKDIR /var/www/html
-USER inchoo
 
 CMD ["/start.sh"]
