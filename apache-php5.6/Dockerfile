@@ -1,14 +1,14 @@
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 
 # Setup common packages, repo info, etc
 RUN apt-get update
 RUN apt-get dist-upgrade -y
-RUN apt-get install -y whois sudo vim htop software-properties-common python-software-properties sendmail git iproute iputils-ping lsof
+RUN apt-get install -y whois sudo vim htop software-properties-common sendmail git iproute2 iputils-ping lsof
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
 # Install packages
-RUN apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php5.6-bcmath php5.6-cli php5.6-common php5.6-curl php5.6-fpm php5.6-gd php5.6-intl php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-opcache php5.6-readline php5.6-soap php5.6-xml php5.6-xsl php5.6-zip php-xdebug mariadb-client curl
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 apache2-bin apache2-data apache2-utils libapache2-mod-fcgid php5.6-bcmath php5.6-cli php5.6-common php5.6-curl php5.6-fpm php5.6-gd php5.6-intl php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-opcache php5.6-readline php5.6-soap php5.6-xml php5.6-xsl php5.6-zip php-xdebug mariadb-client curl
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y nodejs
 
@@ -54,5 +54,6 @@ RUN apt-get clean
 RUN rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 WORKDIR /var/www/html
+USER inchoo
 
 CMD ["/start.sh"]
