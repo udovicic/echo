@@ -34,6 +34,7 @@ RUN echo "alias php-debug='php -d xdebug.remote_autostart=1'" > /home/inchoo/.ba
 
 # Add custom configuration
 ADD config/fpm.conf /etc/php/7.0/fpm/pool.d/www.conf
+ADD config/apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Add custom scripts
 ADD start.sh /start.sh
