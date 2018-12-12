@@ -27,7 +27,7 @@ ADD start.sh /start.sh
 ADD scripts/robo.phar /usr/bin/robo
 ADD scripts/composer.phar /usr/bin/composer
 
-RUN chmod 755 /start.sh && chmod 755 /usr/bin/robo && chmod 755 /usr/bin/composer && chmod 755 /usr/bin/n98-magerun && chmod 755 /usr/bin/n98-magerun2
+RUN chmod 755 /start.sh && chmod 755 /usr/bin/robo && chmod 755 /usr/bin/composer
 
 # Cleanup
 RUN apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
