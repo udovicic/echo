@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Handle the IP change
 cat /etc/hosts | grep -v "inchoo.host.internal" > /etc/hosts
