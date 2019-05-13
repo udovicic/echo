@@ -8,5 +8,6 @@ echo "`/sbin/ip route|awk '/default/ { print $3 }' | grep -v ppp` inchoo.host.in
 sed "s#DOCUMENT_ROOT#${DOCUMENT_ROOT:-/var/www/html}#g" -i /etc/apache2/sites-available/000-default.conf
 
 # Run services
+service ssh start
 nohup /usr/sbin/php-fpm7.0 &
 /usr/sbin/apache2ctl -D FOREGROUND

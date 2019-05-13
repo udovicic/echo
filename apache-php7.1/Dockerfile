@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Setup common packages, repo info, etc
-RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y whois sudo vim htop software-properties-common sendmail git iproute2 iputils-ping lsof unzip rsync wget lsyncd
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y whois sudo vim htop software-properties-common sendmail git iproute2 iputils-ping lsof unzip rsync wget lsyncd openssh-server sshpass cachefilesd
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update
 
 # Install packages
