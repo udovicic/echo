@@ -21,6 +21,7 @@ RUN useradd -m -p `mkpasswd "inchoo"` -s /bin/bash inchoo && adduser inchoo sudo
 
 # Add custom configuration
 ADD config/fpm.conf /etc/php/7.2/fpm/pool.d/www.conf
+ADD config/apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Add custom scripts
 ADD start.sh /start.sh
