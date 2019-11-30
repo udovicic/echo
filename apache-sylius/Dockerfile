@@ -31,7 +31,7 @@ ADD scripts/composer.phar /usr/bin/composer
 RUN chmod 755 /start.sh && chmod 755 /usr/bin/robo && chmod 755 /usr/bin/composer
 
 # Cleanup
-RUN apt-get purge software-properties-common && apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
+RUN apt-get purge -y software-properties-common && apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 WORKDIR /var/www/html
 
