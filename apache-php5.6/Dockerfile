@@ -32,7 +32,7 @@ ADD scripts/n98-magerun2.phar /usr/bin/n98-magerun2
 RUN chmod 755 /start.sh && chmod 755 /usr/bin/robo && chmod 755 /usr/bin/composer && chmod 755 /usr/bin/n98-magerun && chmod 755 /usr/bin/n98-magerun2
 
 # Cleanup
-RUN apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
+RUN apt-get purge software-properties-common && apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 WORKDIR /var/www/html
 
