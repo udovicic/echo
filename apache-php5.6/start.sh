@@ -17,8 +17,11 @@ fi
 sed "s#DOCUMENT_ROOT#${DOCUMENT_ROOT:-/var/www/html}#g" -i /etc/apache2/sites-available/000-default.conf
 sed "s#CERTIFICATION_URL#${CERTIFICATION_URL:-default}#g" -i /etc/apache2/sites-available/000-default.conf
 
+# Fix link-count, as cron is being a pain, and docker is making hardlink count >0 (very high)
+touch /etc/crontab /etc/cron.*/*
 
 # Run services
 service ssh start
-nohup /usr/sbin/php-fpm5.6 &
+service cron start
+service php5.6-fpm start
 /usr/sbin/apache2ctl -D FOREGROUND
