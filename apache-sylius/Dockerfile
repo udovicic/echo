@@ -24,8 +24,9 @@ ADD config/apache.conf /etc/apache2/sites-available/000-default.conf
 ADD start.sh /start.sh
 ADD scripts/robo.phar /usr/bin/robo
 ADD scripts/composer.phar /usr/bin/composer
+ADD scripts/deployer.phar /usr/bin/deployer
 
-RUN chmod 755 /start.sh && chmod 755 /usr/bin/robo && chmod 755 /usr/bin/composer
+RUN chmod 755 /start.sh && chmod 755 /usr/bin/robo && chmod 755 /usr/bin/composer && chmod 755 /usr/bin/deployer
 
 # Cleanup
 RUN apt-get purge -y software-properties-common && apt-get autoremove -y && apt-get clean && rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
