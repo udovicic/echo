@@ -10,8 +10,3 @@ for D in apache-php*; do
 		cd ../..
 	fi
 done
-
-# This one is a special case
-cd apache-sylius/scripts/
-php composer.phar selfupdate && robo.phar self:update && php deployer.phar self-update
-cd ../..
