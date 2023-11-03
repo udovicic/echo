@@ -1,6 +1,9 @@
 This is a set of recepies for custom taylor Docker images
 
 ## building
+This was original travis-ci file
+
+```
 docker build --no-cache --rm --tag udovicic/echo:apache-php8.1-alternate .
 
   - if [[ "${TRAVIS_TAG}" != "" ]]; then
@@ -11,3 +14,4 @@ docker build --no-cache --rm --tag udovicic/echo:apache-php8.1-alternate .
     docker push udovicic/magepack:latest;
     docker push udovicic/magepack:${TRAVIS_TAG};
     fi
+```
